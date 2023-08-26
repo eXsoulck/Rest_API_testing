@@ -2,19 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building..'
+                git branch: "main", url:"https://github.com/eXsoulck/JSON_API_with_allure"
+            }
+        }
+        stage('Setup environment') {
+            steps {
+                sh "python -m pip install --upgrade pip"
+                sh "python -n pip install -r requirements.txt"
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh "python -n pytest"
             }
         }
     }
