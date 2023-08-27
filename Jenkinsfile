@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Setup environment') {
             steps {
-                sh 'python -n pip install -r requirements.txt'
+                sh 'python -m pip install -r requirements.txt'
             }
         }
         stage('Test') {
