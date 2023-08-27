@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Setup environment') {
             steps {
-                sh 'python -m pip install -r requirements.txt'
+                sh 'pacman -S pytest pytest-dotenv pytest-xdist equests'
             }
         }
         stage('Test') {
