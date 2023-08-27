@@ -9,7 +9,9 @@ pipeline {
         }
         stage('Setup environment') {
             steps {
-                sh 'pacman -S pytest pytest-dotenv pytest-xdist equests'
+                sh 'python -m venv venv'
+                sh 'source venv/bin/activate'
+                sh 'python -m pip install -r requirements.txt'
             }
         }
         stage('Test') {
